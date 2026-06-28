@@ -36,6 +36,8 @@ tree_ranker_guard_qot_margin_slack: 0.25
 tree_ranker_guard_energy_slack_w: 480.0
 tree_ranker_guard_delay_slack_ms: 10.0
 ong_source_path: external/optical-networking-gym
+ong_auto_install: true
+ong_lock_file: third_party/optical-networking-gym.lock
 ong_topology_id: nsfnet_chen
 k_routes: 5
 slots: 100

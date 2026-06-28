@@ -15,21 +15,27 @@ commit: 622d0741ff75388161f7c468757ae880471d6d2b
 branch at experiment time: main
 ```
 
-The source evaluation config contains a machine-specific path:
+The source evaluation config contains a machine-specific path, while the clean reproduction config uses an auto-installable local path:
 
 ```yaml
 ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
 ong_topology_id: nsfnet_chen
 ```
 
-For local reproduction, clone and checkout the locked Optical Networking Gym version:
+For local reproduction, the wrapper clones and checks out the locked Optical Networking Gym version automatically when `external/optical-networking-gym` is missing:
+
+```bash
+python scripts/reproduce_mvp80.py
+```
+
+Equivalent manual commands are:
 
 ```bash
 git clone https://github.com/carlosnatalino/optical-networking-gym.git external/optical-networking-gym
 git -C external/optical-networking-gym checkout 622d0741ff75388161f7c468757ae880471d6d2b
 ```
 
-Then pass the local path to the evaluation wrapper if your checkout path differs:
+Pass the local path to the evaluation wrapper if your checkout path differs; the wrapper can also clone to that target path if it is missing:
 
 ```bash
 python scripts/reproduce_mvp80.py --ong-source-path /path/to/optical-networking-gym

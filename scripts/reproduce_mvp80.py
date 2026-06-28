@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_CONFIG = Path("configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml")
 RUNNER = Path("scripts/experiments/run_eon_experiment.py")
+DEFAULT_ONG_LOCK = Path("third_party/optical-networking-gym.lock")
 
 PATH_KEYS = (
     "dataset_path",
@@ -111,6 +112,88 @@ def _pythonpath_env() -> dict[str, str]:
     return env
 
 
+def _raw_bool(config: dict[str, str], key: str, default: bool) -> bool:
+    value = config.get(key)
+    if value is None:
+        return default
+    return str(value).strip().lower() in {"1", "true", "yes", "y", "on"}
+
+
+def _read_ong_lock(path: Path) -> dict[str, str]:
+    values: dict[str, str] = {}
+    for line in path.read_text(encoding="utf-8").splitlines():
+        stripped = line.strip()
+        if not stripped or stripped.startswith("#") or ":" not in stripped:
+            continue
+        key, value = stripped.split(":", 1)
+        key = key.strip()
+        value = value.strip().strip("'\"")
+        if key in {"upstream_repository", "commit", "clean_repo_expected_path"}:
+            values[key] = value
+    missing = {"upstream_repository", "commit"} - set(values)
+    if missing:
+        raise RuntimeError(f"ONG lock file is missing keys: {', '.join(sorted(missing))}")
+    return values
+
+
+def _run_command(command: list[str], *, dry_run: bool = False) -> None:
+    print(f"ONG setup: {_command_display(command)}")
+    if dry_run:
+        return
+    completed = subprocess.run(command, cwd=str(ROOT))
+    if completed.returncode != 0:
+        raise RuntimeError(f"Command failed with exit code {completed.returncode}: {_command_display(command)}")
+
+
+def _command_output(command: list[str]) -> str:
+    completed = subprocess.run(command, cwd=str(ROOT), text=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    if completed.returncode != 0:
+        raise RuntimeError(
+            f"Command failed with exit code {completed.returncode}: {_command_display(command)}\n"
+            f"{completed.stderr.strip()}"
+        )
+    return completed.stdout.strip()
+
+
+def _ensure_ong_checkout(config: dict[str, str], *, dry_run: bool, no_install: bool) -> bool:
+    if no_install or not _raw_bool(config, "ong_auto_install", True):
+        return False
+
+    raw_path = config.get("ong_source_path")
+    if not raw_path:
+        return False
+
+    lock_path = _repo_path(config.get("ong_lock_file", str(DEFAULT_ONG_LOCK)))
+    lock = _read_ong_lock(lock_path)
+    repo_url = lock["upstream_repository"]
+    commit = lock["commit"]
+    ong_path = _repo_path(raw_path)
+
+    if not ong_path.exists():
+        if not dry_run:
+            ong_path.parent.mkdir(parents=True, exist_ok=True)
+        _run_command(["git", "clone", repo_url, str(ong_path)], dry_run=dry_run)
+        _run_command(["git", "-C", str(ong_path), "checkout", commit], dry_run=dry_run)
+        return True
+
+    if not (ong_path / ".git").exists():
+        return True
+
+    current_commit = _command_output(["git", "-C", str(ong_path), "rev-parse", "HEAD"])
+    if current_commit == commit:
+        return True
+
+    status = _command_output(["git", "-C", str(ong_path), "status", "--porcelain"])
+    if status:
+        raise RuntimeError(
+            f"Existing ONG checkout is not clean: {ong_path}. "
+            "Commit was not changed automatically."
+        )
+    _run_command(["git", "-C", str(ong_path), "fetch", "--tags", "origin"], dry_run=dry_run)
+    _run_command(["git", "-C", str(ong_path), "checkout", commit], dry_run=dry_run)
+    return True
+
+
 def _collect_missing_paths(config: dict[str, str], skip_ong_check: bool) -> list[str]:
     missing: list[str] = []
     for path, label in ((_repo_path(RUNNER), "experiment runner"),):
@@ -143,7 +226,7 @@ def _collect_missing_paths(config: dict[str, str], skip_ong_check: bool) -> list
             if not ong_path.exists():
                 missing.append(
                     f"ong_source_path: {ong_path} "
-                    "(clone the pinned Optical Networking Gym commit or pass --ong-source-path)"
+                    "(auto-install failed or was disabled; pass --ong-source-path or check the lock file)"
                 )
     return missing
 
@@ -196,6 +279,11 @@ def build_arg_parser() -> argparse.ArgumentParser:
         help="Do not require ong_source_path to exist during validation.",
     )
     parser.add_argument(
+        "--no-install-ong",
+        action="store_true",
+        help="Do not clone or checkout the pinned Optical Networking Gym source automatically.",
+    )
+    parser.add_argument(
         "--skip-validation",
         action="store_true",
         help="Launch without checking local dataset, model artifact, and ONG paths.",
@@ -230,8 +318,21 @@ def main(argv: list[str] | None = None) -> int:
             _write_overridden_config(config_path, runtime_config, updates)
 
         config_values = _read_top_level_yaml_scalars(runtime_config)
+        planned_ong_install = False
+        if not args.skip_ong_check:
+            try:
+                planned_ong_install = _ensure_ong_checkout(
+                    config_values,
+                    dry_run=args.dry_run,
+                    no_install=args.no_install_ong,
+                )
+            except RuntimeError as exc:
+                print(f"ONG setup failed: {exc}", file=sys.stderr)
+                return 2
+
         if not args.skip_validation:
-            missing = _collect_missing_paths(config_values, skip_ong_check=args.skip_ong_check)
+            skip_ong_validation = args.skip_ong_check or (args.dry_run and planned_ong_install)
+            missing = _collect_missing_paths(config_values, skip_ong_check=skip_ong_validation)
             if missing:
                 print("Reproduction input check failed:", file=sys.stderr)
                 for item in missing:

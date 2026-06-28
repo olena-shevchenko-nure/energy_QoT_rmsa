@@ -21,6 +21,8 @@ python scripts/reproduce_mvp80.py --dry-run
 python scripts/reproduce_mvp80.py
 ```
 
+When `ong_auto_install: true` is set in the evaluation config, the wrapper clones the pinned Optical Networking Gym checkout from `third_party/optical-networking-gym.lock` into `external/optical-networking-gym` if it is missing.
+
 For a local smoke check before the full 80-episode rollout:
 
 ```bash
@@ -31,6 +33,12 @@ If Optical Networking Gym is installed elsewhere, use:
 
 ```bash
 python scripts/reproduce_mvp80.py --ong-source-path /path/to/optical-networking-gym
+```
+
+To require a pre-existing manual checkout instead of automatic installation, use:
+
+```bash
+python scripts/reproduce_mvp80.py --no-install-ong
 ```
 
 The configuration evaluates these policies on the same NSFNET MVP80 test split:

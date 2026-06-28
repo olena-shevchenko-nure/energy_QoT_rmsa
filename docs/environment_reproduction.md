@@ -7,7 +7,7 @@ This repository includes a pinned reproduction environment for the MVP80 experim
 - `requirements-repro.txt`: installable pinned Python dependencies for fresh reproduction.
 - `requirements-repro-lock.txt`: full observed `pip freeze` snapshot from the experiment host.
 - `environment-repro.yml`: conda/mamba environment wrapper using `requirements-repro.txt`.
-- `third_party/optical-networking-gym.lock`: pinned external Optical Networking Gym commit.
+- `third_party/optical-networking-gym.lock`: pinned external Optical Networking Gym commit used by automatic setup.
 
 ## Captured Experiment Host
 
@@ -32,14 +32,21 @@ python -m pip install -r requirements-repro.txt
 python -m pip install -e .
 ```
 
-Then install the pinned Optical Networking Gym dependency:
+The MVP80 wrapper installs the pinned Optical Networking Gym source checkout automatically on first run:
+
+```bash
+python scripts/reproduce_mvp80.py --dry-run
+python scripts/reproduce_mvp80.py
+```
+
+Manual setup is still possible when network access is restricted or a shared checkout is preferred:
 
 ```bash
 git clone https://github.com/carlosnatalino/optical-networking-gym.git external/optical-networking-gym
 git -C external/optical-networking-gym checkout 622d0741ff75388161f7c468757ae880471d6d2b
 ```
 
-If your local path differs from `external/optical-networking-gym`, pass it to the reproduction wrapper:
+If your local path differs from `external/optical-networking-gym`, pass it to the reproduction wrapper; the wrapper can clone the pinned commit to that path if it is missing:
 
 ```bash
 python scripts/reproduce_mvp80.py --ong-source-path /path/to/optical-networking-gym

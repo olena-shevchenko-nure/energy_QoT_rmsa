@@ -8,7 +8,7 @@ It includes the final model artifacts, the generated NSFNET MVP dataset, the Opt
 - Source code, scripts, and configuration files: GNU GPL v3 or later. See `LICENSE`.
 - Generated datasets, result tables, statistical summaries, and experiment reports: CC BY 4.0. See `DATA_LICENSE.md`.
 - Trained checkpoints and exported runtime model artifacts: CC BY 4.0. See `MODEL_ARTIFACTS_LICENSE.md`.
-- Optical Networking Gym is an external dependency pinned in `third_party/optical-networking-gym.lock` and remains subject to its upstream license.
+- Optical Networking Gym is an external dependency pinned in `third_party/optical-networking-gym.lock`; `scripts/reproduce_mvp80.py` can clone the pinned checkout automatically. It remains subject to its upstream license.
 
 ## Paper Policy Mapping
 
@@ -38,7 +38,7 @@ It includes the final model artifacts, the generated NSFNET MVP dataset, the Opt
 ## Main Reproduction Entry Points
 
 1. Install the pinned Python dependencies from `requirements-repro.txt`. See `docs/environment_reproduction.md`.
-2. Install or clone Optical Networking Gym as described in `docs/optical_networking_gym_setup.md`.
+2. Optical Networking Gym is installed automatically by `scripts/reproduce_mvp80.py` from the pinned lock file when `external/optical-networking-gym` is missing.
 3. Check the local MVP80 inputs:
 
 ```bash
@@ -53,7 +53,7 @@ python scripts/reproduce_mvp80.py
 
 5. Compare the generated output with `results/mvp80/tables` and `results/mvp80/statistics`.
 
-If Optical Networking Gym is not checked out at `external/optical-networking-gym`, pass `--ong-source-path /path/to/optical-networking-gym`. See `docs/experiment_runbook.md`.
+If Optical Networking Gym should be installed or reused at another path, pass `--ong-source-path /path/to/optical-networking-gym`. To disable auto-installation, pass `--no-install-ong`. See `docs/experiment_runbook.md`.
 
 ## Current Paper Results
 

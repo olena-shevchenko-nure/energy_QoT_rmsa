@@ -5,9 +5,9 @@ __pycache__/
 .ruff_cache/
 .venv/
 venv/
+external/
 build/
 dist/
 *.egg-info/
 tmp/
 *.log.tmp
-

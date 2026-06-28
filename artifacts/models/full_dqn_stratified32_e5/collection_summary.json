@@ -1,0 +1,34 @@
+{
+  "train_collect": {
+    "accepted": 11055,
+    "blocked": 4945,
+    "elapsed_sec": 60.68947351700626,
+    "episode_selection": "stratified",
+    "episodes": 32,
+    "examples": 11055,
+    "fallback_teacher": 0,
+    "mean_teacher_index": 1.9342379014020805,
+    "mean_teacher_margin": 0.3014055608516902,
+    "mean_valid_candidates": 11.153867028493893,
+    "no_candidate_requests": 4945,
+    "requests": 16000,
+    "split": "train",
+    "teacher_rollout_blocking_rate": 0.3090625
+  },
+  "val_collect": {
+    "accepted": 5499,
+    "blocked": 2501,
+    "elapsed_sec": 29.58030367596075,
+    "episode_selection": "stratified",
+    "episodes": 16,
+    "examples": 5499,
+    "fallback_teacher": 0,
+    "mean_teacher_index": 1.8476086561192944,
+    "mean_teacher_margin": 0.2954128736538288,
+    "mean_valid_candidates": 10.585197308601565,
+    "no_candidate_requests": 2501,
+    "requests": 8000,
+    "split": "val",
+    "teacher_rollout_blocking_rate": 0.312625
+  }
+}

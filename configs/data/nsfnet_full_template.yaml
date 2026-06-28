@@ -1,0 +1,72 @@
+dataset_name: nsfnet_full
+topology: nsfnet_deeprmsa_14_22
+slots: 100
+k_routes: 5
+n_max: 32
+slot_capacity_gbps_at_1bpshz: 12.5
+guard_band_slots: 1
+delay_bound_ms: 50.0
+span_length_km: 80
+amplifier_power_w: 20
+roadm_switch_power_w: 5
+mean_holding_time: 14.0
+min_useful_slot_width: 4
+random_starts_per_route_mod: 3
+generate_cnn: true
+generate_gnn: true
+generate_dqn: true
+max_cnn_samples_per_request: 32
+save_artifacts: true
+traffic_scenarios: [uniform, hotspot, nonuniform, bursty]
+loads: [low, medium, high, overload]
+hotspot_nodes: [8, 9, 12, 14]
+bit_rates:
+  100: 0.45
+  200: 0.35
+  400: 0.20
+  # 800 Gbps is intentionally disabled in the default v1 experiments.
+  # 800: 0.0
+load_profiles:
+  low: 3.0
+  medium: 5.0
+  high: 8.0
+  overload: 12.0
+splits:
+  train:
+    seed_start: 0
+    seed_stop: 800
+    requests_per_seed: 5000
+  val:
+    seed_start: 800
+    seed_stop: 900
+    requests_per_seed: 5000
+  test:
+    seed_start: 900
+    seed_stop: 1000
+    requests_per_seed: 8000
+scoring:
+  lambda_frag: 1.0
+  lambda_gap: 0.6
+  lambda_lmax: 0.4
+  lambda_fit: 0.3
+  mu_energy: 0.25
+  mu_delay: 0.2
+  mu_qot: 0.2
+  mu_width: 0.1
+  energy_norm_w: 1200.0
+collection_policy:
+  softmax_tau: 0.35
+  softmax_top_k: 8
+reward:
+  alpha_energy: 0.2
+  beta_fragmentation: 0.3
+  kappa_qot: 0.1
+  mu_delay: 0.1
+q_head:
+  c1: 0.25
+  c2: 0.35
+  c3: 0.1
+  c4: 0.1
+  c5: 0.1
+  c6: 0.1
+

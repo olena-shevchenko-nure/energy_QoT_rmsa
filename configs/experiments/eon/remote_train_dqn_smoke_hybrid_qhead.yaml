@@ -1,0 +1,24 @@
+experiment_name: eon_train_dqn_smoke_hybrid_qhead
+stage: train_dqn
+dataset_path: data/eon/generated/nsfnet_smoke_hybrid_qhead
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+batch_size: 32
+max_batches: 0
+n_max: 32
+hidden_dim: 128
+epochs: 4
+patience: 2
+supervised_warmup_epochs: 3
+learning_rate: 0.0002
+weight_decay: 0.0001
+gamma: 0.95
+target_update_interval: 200
+freeze_encoders: true
+pretrained_cnn_checkpoint: runs/eon/eon_pretrain_cnn_smoke/20260530_132448_unknown/cnn_encoder_best.pt
+pretrained_gnn_checkpoint: runs/eon/eon_pretrain_gnn_smoke/20260530_132750_unknown/gnn_encoder_best.pt

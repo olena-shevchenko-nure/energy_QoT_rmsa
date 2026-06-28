@@ -1,0 +1,48 @@
+experiment_name: eon_train_deeprmsa_a3c_smoke
+stage: train_deeprmsa_a3c
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+batch_size: 64
+max_batches: 5
+progress_every_batches: 1
+train_transition_limit: 512
+val_transition_limit: 256
+test_transition_limit: 256
+n_max: 32
+hidden_dim: 128
+deeprmsa_layers: 5
+dropout: 0.05
+epochs: 2
+patience: 1
+learning_rate: 0.0002
+weight_decay: 0.0001
+gamma: 0.95
+n_step_return: 3
+learning_target: blocking_sensitive_hybrid
+target_topn_rank_weight: 0.10
+target_fragmentation_weight: 0.25
+target_lmax_weight: 0.35
+target_small_gap_weight: 0.35
+target_delta_fragmentation_weight: 0.30
+policy_gradient_loss_weight: 0.25
+imitation_loss_weight: 1.0
+value_loss_weight: 0.50
+entropy_loss_weight: 0.01
+reward_override_mode: problem_shaped
+accepted_service_reward: 1.0
+block_penalty: -1.5
+reward_energy_weight: 0.25
+reward_fragmentation_weight: 0.55
+reward_qot_margin_weight: 0.15
+reward_delay_weight: 0.10
+validation_best_miss_weight: 1.0
+validation_energy_weight: 0.35
+validation_fragmentation_weight: 1.25
+validation_qot_margin_weight: 0.35
+validation_delay_weight: 0.05

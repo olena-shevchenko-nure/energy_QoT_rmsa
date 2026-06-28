@@ -1,0 +1,40 @@
+experiment_name: eon_train_dqn_smoke_ong_expert_nstep3_residual
+stage: train_dqn
+dataset_path: data/eon/generated/nsfnet_smoke_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+batch_size: 32
+max_batches: 0
+n_max: 32
+hidden_dim: 128
+epochs: 4
+patience: 2
+supervised_warmup_epochs: 3
+learning_rate: 0.0002
+weight_decay: 0.0001
+gamma: 0.95
+n_step_return: 3
+target_update_interval: 200
+freeze_encoders: true
+imitation_target: best
+ranking_target: best
+q_score_mode: q_head_residual
+residual_scale: 1.0
+residual_l2_weight: 0.02
+td_loss_weight: 0.35
+imitation_loss_weight: 1.0
+ranking_loss_weight: 0.10
+ranking_margin: 0.05
+checkpoint_score_mode: action_quality
+validation_best_miss_weight: 1.0
+validation_energy_weight: 0.35
+validation_fragmentation_weight: 1.25
+validation_qot_margin_weight: 0.35
+validation_delay_weight: 0.05
+pretrained_cnn_checkpoint: runs/eon/eon_pretrain_cnn_smoke/20260530_132448_unknown/cnn_encoder_best.pt
+pretrained_gnn_checkpoint: runs/eon/eon_pretrain_gnn_smoke/20260530_132750_unknown/gnn_encoder_best.pt

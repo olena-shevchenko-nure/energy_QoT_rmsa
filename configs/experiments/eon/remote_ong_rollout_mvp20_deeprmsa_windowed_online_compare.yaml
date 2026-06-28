@@ -1,0 +1,20 @@
+experiment_name: eon_ong_rollout_mvp20_deeprmsa_windowed_online_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - energy-aware-ksp-bm-ff
+  - deeprmsa_a3c
+max_episodes: 20
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+deeprmsa_checkpoint: ${CSE2026_DEEPRMSA_CHECKPOINT}
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

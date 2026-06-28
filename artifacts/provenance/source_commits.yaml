@@ -1,0 +1,9 @@
+source_project:
+  branch: "energy_aware_ksp_bm_ff_based"
+  commit: "5d6fff1b26c9141c1e601d2404fbb82885459618"
+  note: "Clean reproducibility snapshot assembled from this source branch and remote artifact tree."
+
+target_repository:
+  url: "https://github.com/olena-shevchenko-nure/energy_QoT_rmsa"
+  initial_snapshot_date: "2026-06-28"
+

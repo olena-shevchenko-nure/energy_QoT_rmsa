@@ -1,0 +1,146 @@
+{
+  "batch_size": 64,
+  "best_epoch": 4,
+  "best_val_teacher_top1_accuracy": 0.7414075286415712,
+  "checkpoint_path": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon/quick_runtime_artifacts/full_dqn_orate60_distill_frozen_mvp20_stratified32_e5/full_dqn_orate60_distill_frozen.pt",
+  "device": "cuda",
+  "epochs": 5,
+  "history": [
+    {
+      "elapsed_sec": 7.3317316910251975,
+      "epoch": 1,
+      "phase": "epoch",
+      "train_eval": {
+        "examples": 11055,
+        "loss": 0.8092727276975709,
+        "mean_student_index": 1.7761194029850746,
+        "mean_teacher_index": 1.9342379014020805,
+        "mean_teacher_margin_logit": 46404342.510465175,
+        "mean_valid_candidates": 11.153867028493893,
+        "teacher_top1_accuracy": 0.6900949796472184
+      },
+      "train_loss_online": 1.1436524349830055,
+      "train_teacher_top1_accuracy_online": 0.5763907734056988,
+      "val_eval": {
+        "examples": 5499,
+        "loss": 0.8065065325692643,
+        "mean_student_index": 1.695944717221313,
+        "mean_teacher_index": 1.8476086561192944,
+        "mean_teacher_margin_logit": 56373886.72726149,
+        "mean_valid_candidates": 10.585197308601565,
+        "teacher_top1_accuracy": 0.6997635933806147
+      }
+    },
+    {
+      "elapsed_sec": 6.402468039887026,
+      "epoch": 2,
+      "phase": "epoch",
+      "train_eval": {
+        "examples": 11055,
+        "loss": 0.7232818126333931,
+        "mean_student_index": 1.871641791044776,
+        "mean_teacher_index": 1.9342379014020805,
+        "mean_teacher_margin_logit": 46404342.67680425,
+        "mean_valid_candidates": 11.153867028493893,
+        "teacher_top1_accuracy": 0.721935775667119
+      },
+      "train_loss_online": 0.872792935440306,
+      "train_teacher_top1_accuracy_online": 0.6445952057892357,
+      "val_eval": {
+        "examples": 5499,
+        "loss": 0.7204186119312463,
+        "mean_student_index": 1.7650481905801054,
+        "mean_teacher_index": 1.8476086561192944,
+        "mean_teacher_margin_logit": 56373886.88521792,
+        "mean_valid_candidates": 10.585197308601565,
+        "teacher_top1_accuracy": 0.7317694126204765
+      }
+    },
+    {
+      "elapsed_sec": 6.410232000052929,
+      "epoch": 3,
+      "phase": "epoch",
+      "train_eval": {
+        "examples": 11055,
+        "loss": 0.6777892550292043,
+        "mean_student_index": 1.8583446404341926,
+        "mean_teacher_index": 1.9342379014020805,
+        "mean_teacher_margin_logit": 46404342.87820151,
+        "mean_valid_candidates": 11.153867028493893,
+        "teacher_top1_accuracy": 0.7295341474445952
+      },
+      "train_loss_online": 0.8076037816229583,
+      "train_teacher_top1_accuracy_online": 0.6657620985979195,
+      "val_eval": {
+        "examples": 5499,
+        "loss": 0.6804958211128102,
+        "mean_student_index": 1.7590470994726315,
+        "mean_teacher_index": 1.8476086561192944,
+        "mean_teacher_margin_logit": 56373887.08023745,
+        "mean_valid_candidates": 10.585197308601565,
+        "teacher_top1_accuracy": 0.7377705037279505
+      }
+    },
+    {
+      "elapsed_sec": 6.535875897156075,
+      "epoch": 4,
+      "phase": "epoch",
+      "train_eval": {
+        "examples": 11055,
+        "loss": 0.6594949955540585,
+        "mean_student_index": 1.7842605156037992,
+        "mean_teacher_index": 1.9342379014020805,
+        "mean_teacher_margin_logit": 46404342.895035826,
+        "mean_valid_candidates": 11.153867028493893,
+        "teacher_top1_accuracy": 0.737584803256445
+      },
+      "train_loss_online": 0.7666505933496993,
+      "train_teacher_top1_accuracy_online": 0.687019448213478,
+      "val_eval": {
+        "examples": 5499,
+        "loss": 0.6583632248085599,
+        "mean_student_index": 1.6875795599199854,
+        "mean_teacher_index": 1.8476086561192944,
+        "mean_teacher_margin_logit": 56373887.10000591,
+        "mean_valid_candidates": 10.585197308601565,
+        "teacher_top1_accuracy": 0.7414075286415712
+      }
+    },
+    {
+      "elapsed_sec": 6.556807996938005,
+      "epoch": 5,
+      "phase": "epoch",
+      "train_eval": {
+        "examples": 11055,
+        "loss": 0.650421747065693,
+        "mean_student_index": 1.8990502035278154,
+        "mean_teacher_index": 1.9342379014020805,
+        "mean_teacher_margin_logit": 46404343.09747157,
+        "mean_valid_candidates": 11.153867028493893,
+        "teacher_top1_accuracy": 0.7319764812302125
+      },
+      "train_loss_online": 0.7479984987677867,
+      "train_teacher_top1_accuracy_online": 0.6977838082315694,
+      "val_eval": {
+        "examples": 5499,
+        "loss": 0.6543527332156204,
+        "mean_student_index": 1.8359701763957084,
+        "mean_teacher_index": 1.8476086561192944,
+        "mean_teacher_margin_logit": 56373887.28757785,
+        "mean_valid_candidates": 10.585197308601565,
+        "teacher_top1_accuracy": 0.7386797599563557
+      }
+    }
+  ],
+  "learning_rate": 0.0003,
+  "pretrained": {
+    "initial_dqn_checkpoint": null,
+    "pretrained_cnn_checkpoint": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon/eon_pretrain_cnn_mvp_fast/20260531_015716_unknown/cnn_encoder_best.pt",
+    "pretrained_gnn_checkpoint": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon/eon_pretrain_gnn_mvp_fast/20260531_015748_unknown/gnn_encoder_best.pt"
+  },
+  "stage": "train_full_dqn_orate60_distill",
+  "teacher_artifact": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon/frozen_artifacts/dqn_orate60_20260606/torch_dqn_distill_old10_orate60_tree_ranker.json",
+  "train_examples": 11055,
+  "val_examples": 5499,
+  "weight_decay": 0.0001
+}

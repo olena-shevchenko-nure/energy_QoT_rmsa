@@ -1,0 +1,19 @@
+{
+  "name": "nsfnet_deeprmsa_14_22",
+  "topology_variant": "DeepRMSA-compatible NSFNET 14-node / 22-link / 44-directed-link",
+  "source_note": "Numeric topology encoded from experiment prompt; no external source code copied.",
+  "slot_total": 100,
+  "directed": true,
+  "node_count": 14,
+  "undirected_link_count": 22,
+  "directed_link_count": 44,
+  "span_length_km": 80,
+  "propagation_speed_km_per_ms": 200.0,
+  "amplifier_power_w": 20,
+  "files": {
+    "nodes": "nodes.csv",
+    "undirected_links": "undirected_links.csv",
+    "directed_links": "directed_links.csv"
+  }
+}
+

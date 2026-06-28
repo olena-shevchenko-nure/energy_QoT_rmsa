@@ -1,0 +1,77 @@
+dataset_name: nsfnet_mvp_hybrid_qhead
+topology: nsfnet_deeprmsa_14_22
+slots: 100
+k_routes: 5
+n_max: 32
+slot_capacity_gbps_at_1bpshz: 12.5
+guard_band_slots: 1
+delay_bound_ms: 50.0
+span_length_km: 80
+amplifier_power_w: 20
+roadm_switch_power_w: 5
+mean_holding_time: 14.0
+min_useful_slot_width: 4
+random_starts_per_route_mod: 2
+generate_cnn: true
+generate_gnn: true
+generate_dqn: true
+max_cnn_samples_per_request: 24
+save_artifacts: true
+traffic_scenarios: [uniform, hotspot, nonuniform, bursty]
+loads: [low, medium, high, overload]
+hotspot_nodes: [8, 9, 12, 14]
+bit_rates:
+  100: 0.45
+  200: 0.35
+  400: 0.20
+load_profiles:
+  low: 3.0
+  medium: 5.0
+  high: 8.0
+  overload: 12.0
+splits:
+  train:
+    seeds: [
+      0, 1, 2, 3, 4, 5, 6, 7, 8, 9,
+      10, 11, 12, 13, 14, 15, 16, 17, 18, 19
+    ]
+    requests_per_seed: 500
+  val:
+    seeds: [800, 801, 802, 803, 804]
+    requests_per_seed: 500
+  test:
+    seeds: [900, 901, 902, 903, 904]
+    requests_per_seed: 750
+scoring:
+  lambda_frag: 1.0
+  lambda_gap: 0.6
+  lambda_lmax: 0.4
+  lambda_fit: 0.3
+  mu_energy: 0.25
+  mu_delay: 0.2
+  mu_qot: 0.2
+  mu_width: 0.1
+  energy_norm_w: 1200.0
+collection_policy:
+  expert_metric: q_head_score
+  expert_probability: 0.70
+  softmax_metric: q_head_score
+  softmax_maximize: true
+  softmax_probability: 0.20
+  softmax_tau: 0.35
+  softmax_top_k: 8
+reward:
+  alpha_energy: 0.2
+  beta_fragmentation: 0.3
+  kappa_qot: 0.1
+  mu_delay: 0.1
+q_head:
+  energy: 0.30
+  fragmentation_after: 0.25
+  qot_risk: 0.10
+  delay: 0.08
+  qot_margin: 0.12
+  largest_free_block: 0.35
+  delta_fragmentation: 0.30
+  small_gap: 0.35
+  compactness: 0.05

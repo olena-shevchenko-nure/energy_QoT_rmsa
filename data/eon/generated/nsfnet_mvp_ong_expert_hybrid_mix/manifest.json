@@ -1,0 +1,135 @@
+{
+  "checksums": {
+    "candidates/test.parquet": "0e8db9138f3a3c187ebe1202ec26c328c1bf36cfc207ccad19b8fa8f52270795",
+    "candidates/test_full.parquet": "1c19e3257574fe53f86c439ac5d372a3632050ab65202b7c5192c7c827376b53",
+    "candidates/train.parquet": "36a315c4e111987d12a1571d070f2764bf50c5fd498e463428947725598d7b9e",
+    "candidates/train_full.parquet": "be271443bbc70299fb0ca14df3ed20258526b044eec9d2655d570a963b6200f5",
+    "candidates/val.parquet": "6f4d32bab20ddb1a4cc4db78650b08ce7e91210fb6defd1af9305e8e50b6b5a7",
+    "candidates/val_full.parquet": "a85562cf63c2db1d60717573d665fdbba9c74b6345039ae6a75d404d91378906",
+    "cnn/test_index.parquet": "5ef6e2294af2d9ec85e55b3b483c224aa81402681f512e242c84e17a93d10983",
+    "cnn/test_tensors.npz": "400367cc4450b077ced24f40aaa25243276ab329fd14318efde4c9fcf2e372d5",
+    "cnn/train_index.parquet": "4baef4f2f5768010b818b3b5bb6f35191512e84d40ebbcb22adb6eb8e554c221",
+    "cnn/train_tensors.npz": "a9ea13a16b90e6a164934fdfb352c5c36fa20e775a7f83d4c5cd28e891d79628",
+    "cnn/val_index.parquet": "ee4c21b331eb82a6b21e14c97bed438cf6d74f4d33c4e7021ac5a8f1d256d43e",
+    "cnn/val_tensors.npz": "3f1dfd50e1fbf102a0ce286323f53300c4ee361b2dc1b191eaa9c9173a3968ec",
+    "dqn/test_transitions.parquet": "f608261a883593df783770ddaf72bcc48b2e0036993b45cca3bcf047e7169b5f",
+    "dqn/train_transitions.parquet": "8b50de46075f90b47738bbbc4284c7c32b07f6d3eacb14d2d2c263eff25172a8",
+    "dqn/val_transitions.parquet": "7fd4b297d93f6a8c180bb568eb37d1bb8ad49342b4492b4f69d4dc53039f15c5",
+    "gnn/test_graphs.npz": "3885004c5a1d9cea7a893da05afaf842e49c476a94a6c83f179a6bd9fad75f88",
+    "gnn/test_routes.parquet": "8b6e33d47f4e1df33f587d9b1d420f756a6c705b8496e0912c223c5d83371df9",
+    "gnn/train_graphs.npz": "bf82e6788a4da05cc5aca19c8ebc43b635d414dd4b1b15441daceb134c54e84f",
+    "gnn/train_routes.parquet": "8b6e33d47f4e1df33f587d9b1d420f756a6c705b8496e0912c223c5d83371df9",
+    "gnn/val_graphs.npz": "025cbef2be05022de7e7cc12d437a7373f7049fb6560c390c8d040c6e3ee3dd2",
+    "gnn/val_routes.parquet": "8b6e33d47f4e1df33f587d9b1d420f756a6c705b8496e0912c223c5d83371df9",
+    "topology/directed_links.csv": "39aff783e951dd2adc37cf2163069993cac7b6ed1a07bb0f1af50a334e3a66b0",
+    "traffic/test.parquet": "f2341ad5ac2af309b0ecf60ad3a519db1326d95834ce461a0a642c90502314b1",
+    "traffic/train.parquet": "db966745058d3825ae24678ede1980d4c444e514a8579d0d08bb81cc9237db47",
+    "traffic/val.parquet": "837bb62d0eb9125d342111639d858696b95726a9809b659b396de4fd61c0576d"
+  },
+  "collection_policy": {
+    "expert": "hybrid_q_head",
+    "expert_probability": 0.7,
+    "random_probability": 0.10000000000000003,
+    "reward_source": "problem_shaped",
+    "softmax_probability": 0.2,
+    "softmax_tau": 0.35,
+    "softmax_top_k": 8
+  },
+  "dataset_name": "nsfnet_mvp_ong_expert_hybrid_mix",
+  "generation_timestamp": "2026-05-30T21:37:28+00:00",
+  "k_routes": 5,
+  "n_max": 32,
+  "parameters": {
+    "accepted_service_reward": 1.0,
+    "batch_size": 64,
+    "block_penalty": -1.0,
+    "dataset_path": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/data/eon/generated/nsfnet_mvp_hybrid_qhead",
+    "device": "auto",
+    "experiment_name": "eon_collect_ong_expert_mvp",
+    "expert_probability": 0.7,
+    "hidden_dim": 128,
+    "k_routes": 5,
+    "max_batches": 3,
+    "max_episodes": 0,
+    "max_requests_per_episode": 0,
+    "n_max": 32,
+    "ong_source_path": "/home/oshevchenko/experiments/optical-networking-gym",
+    "ong_topology_id": "nsfnet_chen",
+    "output_dataset_path": "data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix",
+    "qot_constraint": "DIST",
+    "random_starts_per_route": 2,
+    "reward_delay_weight": 0.1,
+    "reward_energy_weight": 0.3,
+    "reward_fragmentation_weight": 0.35,
+    "reward_mode": "problem_shaped",
+    "reward_qot_margin_weight": 0.15,
+    "runs_root": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon",
+    "seed": 42,
+    "slots": 100,
+    "softmax_probability": 0.2,
+    "softmax_tau": 0.35,
+    "softmax_top_k": 8,
+    "splits": [
+      "train",
+      "val",
+      "test"
+    ],
+    "stage": "collect_ong_expert_dataset"
+  },
+  "slot_total": 100,
+  "source_dataset_path": "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/data/eon/generated/nsfnet_mvp_hybrid_qhead",
+  "splits": {
+    "test": {
+      "candidate_full_rows": 377349,
+      "candidate_topn_rows": 371815,
+      "cnn_index_rows": 371815,
+      "cnn_tensor_shape": [
+        371815,
+        6,
+        100
+      ],
+      "dqn_transition_rows": 60000,
+      "gnn_graph_shape": [
+        60000,
+        14,
+        4
+      ],
+      "traffic_rows": 60000
+    },
+    "train": {
+      "candidate_full_rows": 1041179,
+      "candidate_topn_rows": 1023960,
+      "cnn_index_rows": 1023960,
+      "cnn_tensor_shape": [
+        1023960,
+        6,
+        100
+      ],
+      "dqn_transition_rows": 160000,
+      "gnn_graph_shape": [
+        160000,
+        14,
+        4
+      ],
+      "traffic_rows": 160000
+    },
+    "val": {
+      "candidate_full_rows": 259036,
+      "candidate_topn_rows": 254588,
+      "cnn_index_rows": 254588,
+      "cnn_tensor_shape": [
+        254588,
+        6,
+        100
+      ],
+      "dqn_transition_rows": 40000,
+      "gnn_graph_shape": [
+        40000,
+        14,
+        4
+      ],
+      "traffic_rows": 40000
+    }
+  },
+  "topology": "optical_networking_gym_v2"
+}

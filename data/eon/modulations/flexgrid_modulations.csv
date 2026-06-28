@@ -1,0 +1,6 @@
+modulation_id,name,spectral_efficiency,reach_km,snr_threshold_db,transponder_power_w
+0,BPSK,1,4000,6.5,90
+1,QPSK,2,2000,9.5,100
+2,8QAM,3,1000,12.5,120
+3,16QAM,4,500,15.5,140
+

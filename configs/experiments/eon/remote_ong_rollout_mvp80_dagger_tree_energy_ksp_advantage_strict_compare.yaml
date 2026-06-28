@@ -1,0 +1,40 @@
+experiment_name: eon_ong_rollout_mvp80_dagger_tree_energy_ksp_advantage_strict_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - energy-aware-ksp-bm-ff
+  - xgboost_candidate_ranker
+  - lightgbm_candidate_ranker
+max_episodes: 0
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+xgboost_ranker_path: ${CSE2026_DAGGER_ADV_XGBOOST_RANKER_PATH}
+lightgbm_ranker_path: ${CSE2026_DAGGER_ADV_LIGHTGBM_RANKER_PATH}
+tree_ranker_selection_mode: positive_advantage
+tree_ranker_base_policy: energy-aware-ksp-bm-ff
+tree_ranker_selection_margin: 0.005
+tree_ranker_safety_guard: true
+tree_ranker_guard_fragmentation_slack: 0.04
+tree_ranker_guard_small_gap_slack: 0.04
+tree_ranker_guard_lmax_slack_slots: 6
+tree_ranker_guard_qot_margin_slack: 0.12
+tree_ranker_guard_energy_slack_w: 120.0
+tree_ranker_guard_delay_slack_ms: 1.5
+advantage_gate_enabled: true
+advantage_gate_min_win_prob: 0.85
+advantage_gate_max_loss_prob: 0.03
+advantage_gate_min_delta_pred: 0.20
+advantage_gate_win_weight: 1.0
+advantage_gate_loss_weight: 2.0
+advantage_gate_delta_weight: 1.0
+advantage_gate_ranker_margin_weight: 0.0
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

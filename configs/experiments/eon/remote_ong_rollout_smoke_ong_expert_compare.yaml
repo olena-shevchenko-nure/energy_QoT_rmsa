@@ -1,0 +1,20 @@
+experiment_name: eon_ong_rollout_smoke_ong_expert_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_smoke_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - q_head_heuristic
+  - gnn_cnn_dqn
+max_episodes: 0
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+dqn_checkpoint: ${CSE2026_DQN_CHECKPOINT}
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

@@ -1,0 +1,6 @@
+experiment_name: eon_remote_mvp_validate
+stage: validate_data
+dataset_path: ${CSE2026_DATA_ROOT}/eon/generated/nsfnet_mvp
+runs_root: ${CSE2026_RUNS_ROOT}/eon
+seed: 0
+device: auto

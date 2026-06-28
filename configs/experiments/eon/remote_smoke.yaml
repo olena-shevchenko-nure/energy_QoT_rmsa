@@ -1,0 +1,6 @@
+experiment_name: eon_remote_smoke
+stage: validate_data
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 0
+device: auto

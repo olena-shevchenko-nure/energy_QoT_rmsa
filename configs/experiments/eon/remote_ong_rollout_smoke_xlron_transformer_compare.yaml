@@ -1,0 +1,22 @@
+experiment_name: eon_ong_rollout_smoke_xlron_transformer_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 42
+device: auto
+model_family: rmsa_gn_model
+rollout_split: test
+policies:
+  - j_total_heuristic
+  - q_head_heuristic
+  - xlron_graph_transformer_ppo
+max_episodes: 2
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+xlron_transformer_checkpoint: ${CSE2026_XLRON_TRANSFORMER_CHECKPOINT}
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

@@ -1,0 +1,23 @@
+experiment_name: eon_train_full_dqn_orate60_distill_frozen_mvp20_smoke
+stage: train_dqn
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+batch_size: 64
+max_batches: 25
+n_max: 32
+hidden_dim: 128
+freeze_encoders: true
+q_score_mode: raw
+pretrained_cnn_checkpoint: runs/eon/eon_pretrain_cnn_mvp_fast/20260531_015716_unknown/cnn_encoder_best.pt
+pretrained_gnn_checkpoint: runs/eon/eon_pretrain_gnn_mvp_fast/20260531_015748_unknown/gnn_encoder_best.pt
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

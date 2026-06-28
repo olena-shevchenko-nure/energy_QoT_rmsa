@@ -1,0 +1,20 @@
+experiment_name: eon_pretrain_cnn_mvp_fast
+stage: pretrain_cnn
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+batch_size: 8192
+max_batches: 8
+eval_max_batches: 4
+progress_every_batches: 2
+epochs: 3
+patience: 2
+learning_rate: 0.001
+weight_decay: 0.0001
+hidden_dim: 128
+ranking_loss_weight: 0.0

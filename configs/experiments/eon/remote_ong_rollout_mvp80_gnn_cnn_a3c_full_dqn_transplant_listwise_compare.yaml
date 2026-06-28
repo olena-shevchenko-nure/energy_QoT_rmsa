@@ -1,0 +1,35 @@
+experiment_name: eon_ong_rollout_mvp80_gnn_cnn_a3c_full_dqn_transplant_listwise_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - energy-aware-ksp-bm-ff
+  - torch_dqn_candidate_ranker_distill_old10
+  - gnn_cnn_dqn
+  - gnn_cnn_a3c
+max_episodes: 80
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+q_score_mode: raw
+dqn_checkpoint: runs/eon/quick_runtime_artifacts/full_dqn_orate60_distill_frozen_mvp20_stratified32_e5/full_dqn_orate60_distill_frozen.pt
+torch_dqn_candidate_ranker_distill_old10_path: runs/eon/quick_runtime_artifacts/dqn_distill_old10_override_targetband/torch_dqn_distill_old10_orate60_tree_ranker.json
+gnn_cnn_a3c_checkpoint: ${CSE2026_GNN_CNN_A3C_FULL_DQN_TRANSPLANT_LISTWISE_CHECKPOINT}
+tree_ranker_selection_mode: positive_advantage
+tree_ranker_base_policy: energy-aware-ksp-bm-ff
+tree_ranker_safety_guard: true
+tree_ranker_safety_guard_mode: emergency
+tree_ranker_guard_check_fragmentation: false
+tree_ranker_guard_check_small_gap: false
+tree_ranker_guard_check_lmax: false
+tree_ranker_guard_qot_margin_slack: 0.25
+tree_ranker_guard_energy_slack_w: 480.0
+tree_ranker_guard_delay_slack_ms: 10.0
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

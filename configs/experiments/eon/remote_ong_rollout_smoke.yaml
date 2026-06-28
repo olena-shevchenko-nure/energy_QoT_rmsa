@@ -1,0 +1,33 @@
+experiment_name: eon_ong_rollout_smoke
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 42
+device: auto
+batch_size: 1
+max_batches: 0
+rollout_split: test
+policies:
+  - random_feasible
+  - j_total_heuristic
+  - q_head_heuristic
+  - gnn_cnn_dqn
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+slots: 100
+k_routes: 5
+n_max: 32
+hidden_dim: 128
+qot_constraint: DIST
+slot_capacity_gbps_at_1bpshz: 12.5
+guard_band_slots: 1
+mean_holding_time: 14.0
+min_useful_slot_width: 4
+span_length_km: 80.0
+amplifier_power_w: 20.0
+roadm_switch_power_w: 5.0
+transponder_power_w: 100.0
+energy_norm_w: 1200.0
+delay_bound_ms: 50.0
+random_starts_per_route: 2
+dqn_checkpoint: runs/eon/eon_train_dqn_smoke/20260530_134216_unknown/dqn_best.pt

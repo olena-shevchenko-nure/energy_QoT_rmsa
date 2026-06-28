@@ -1,0 +1,34 @@
+experiment_name: eon_collect_ong_expert_mvp_energy_ksp_mix
+stage: collect_ong_expert_dataset
+dataset_path: data/eon/generated/nsfnet_mvp_hybrid_qhead
+output_dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_energy_aware_ksp_bm_ff_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+n_max: 32
+hidden_dim: 128
+random_starts_per_route: 2
+expert_policy: energy-aware-ksp-bm-ff
+softmax_policy: energy-aware-ksp-bm-ff
+expert_probability: 0.70
+softmax_probability: 0.20
+softmax_tau: 0.35
+softmax_top_k: 8
+reward_mode: problem_shaped
+accepted_service_reward: 1.0
+block_penalty: -1.0
+reward_energy_weight: 0.30
+reward_fragmentation_weight: 0.35
+reward_qot_margin_weight: 0.15
+reward_delay_weight: 0.10
+max_episodes: 0
+max_requests_per_episode: 0
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

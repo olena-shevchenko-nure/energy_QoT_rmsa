@@ -1,0 +1,14 @@
+experiment_name: eon_ong_solver_eval_smoke
+stage: ong_solver_eval
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 42
+device: cpu
+splits:
+  - test
+batch_size: 128
+max_batches: 4
+n_max: 32
+use_neural: false
+# Set use_neural: true and checkpoint_path: path/to/checkpoint.pt
+# on a remote machine with PyTorch installed to evaluate trained CandidateQNetwork weights.

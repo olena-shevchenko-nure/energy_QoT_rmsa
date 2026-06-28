@@ -1,0 +1,43 @@
+experiment_name: eon_train_dqn_mvp_fast_lookahead_ranker_smoke
+stage: train_dqn
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+splits:
+  - train
+  - val
+  - test
+batch_size: 64
+max_batches: 60
+progress_every_batches: 10
+train_transition_limit: 3000
+val_transition_limit: 1000
+test_transition_limit: 1000
+n_max: 32
+hidden_dim: 128
+epochs: 0
+patience: 1
+supervised_warmup_epochs: 8
+learning_rate: 0.0002
+weight_decay: 0.0001
+gamma: 0.95
+n_step_return: 3
+freeze_encoders: true
+learning_target: lookahead_oracle_strict
+lookahead_target_path: ${CSE2026_LOOKAHEAD_TARGET_PATH}
+q_score_mode: q_head_residual
+residual_scale: 1.0
+residual_delta_clip: 0.10
+residual_l2_weight: 0.08
+td_loss_weight: 0.0
+imitation_loss_weight: 1.0
+ranking_loss_weight: 0.0
+checkpoint_score_mode: action_quality
+validation_best_miss_weight: 1.25
+validation_energy_weight: 0.30
+validation_fragmentation_weight: 1.50
+validation_qot_margin_weight: 0.25
+validation_delay_weight: 0.05
+pretrained_cnn_checkpoint: runs/eon/eon_pretrain_cnn_mvp_fast/20260531_015716_unknown/cnn_encoder_best.pt
+pretrained_gnn_checkpoint: runs/eon/eon_pretrain_gnn_mvp_fast/20260531_015748_unknown/gnn_encoder_best.pt

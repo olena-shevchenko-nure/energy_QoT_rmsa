@@ -1,0 +1,7 @@
+experiment_name: eon_topn_baseline_smoke
+stage: topn_baseline_eval
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 0
+device: auto
+splits: [train, val, test]

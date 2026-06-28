@@ -1,0 +1,8 @@
+experiment_name: eon_dataloader_smoke
+stage: dataloader_smoke
+dataset_path: data/eon/generated/nsfnet_smoke
+runs_root: runs/eon
+seed: 0
+device: auto
+batch_size: 64
+max_batches: 3

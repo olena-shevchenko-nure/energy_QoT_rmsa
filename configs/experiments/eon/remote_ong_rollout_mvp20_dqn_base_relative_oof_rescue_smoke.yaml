@@ -1,0 +1,30 @@
+experiment_name: eon_ong_rollout_mvp20_dqn_base_relative_oof_rescue_smoke
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - energy-aware-ksp-bm-ff
+  - torch_dqn_candidate_ranker_distill_old10
+max_episodes: 20
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+torch_dqn_candidate_ranker_distill_old10_path: runs/eon/quick_runtime_artifacts/dqn_base_relative_oof_rescue_v1_hardcase/torch_dqn_base_relative_oof_risk_rescue_tree_ranker.json
+tree_ranker_selection_mode: base_residual
+tree_ranker_base_policy: energy-aware-ksp-bm-ff
+tree_ranker_safety_guard: true
+tree_ranker_safety_guard_mode: emergency
+tree_ranker_guard_check_fragmentation: false
+tree_ranker_guard_check_small_gap: false
+tree_ranker_guard_check_lmax: false
+tree_ranker_guard_qot_margin_slack: 0.25
+tree_ranker_guard_energy_slack_w: 480.0
+tree_ranker_guard_delay_slack_ms: 10.0
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

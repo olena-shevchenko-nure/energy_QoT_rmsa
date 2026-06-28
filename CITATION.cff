@@ -1,0 +1,10 @@
+cff-version: 1.2.0
+message: "If you use this repository, please cite the associated CSE 2026 RMSA paper."
+title: "Energy/QoT-aware RMSA candidate-ranking reproducibility snapshot"
+authors:
+  - family-names: "Shevchenko"
+    given-names: "Olena"
+repository-code: "https://github.com/olena-shevchenko-nure/energy_QoT_rmsa"
+date-released: "2026-06-28"
+version: "paper-snapshot-2026-06-28"
+

@@ -1,0 +1,31 @@
+experiment_name: eon_ong_rollout_mvp_val_dqn_online_constrained_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hard_cases
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: val
+policies:
+  - j_total_heuristic
+  - q_head_heuristic
+  - gnn_cnn_dqn_safe
+max_episodes: 0
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+dqn_checkpoint: ${CSE2026_DQN_CHECKPOINT}
+q_score_mode: q_head_residual
+residual_scale: 1.0
+residual_delta_clip: 0.10
+dqn_gate_margin: 0.005
+dqn_gate_fragmentation_slack: 0.02
+dqn_gate_small_gap_slack: 0.02
+dqn_gate_lmax_slack_slots: 4
+dqn_gate_qot_margin_slack: 0.08
+dqn_gate_energy_slack_w: 80.0
+dqn_gate_delay_slack_ms: 1.0
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

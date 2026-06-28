@@ -1,0 +1,19 @@
+experiment_name: eon_ong_rollout_mvp20_xgb_online_base_topn_exception_smoke
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - xgboost_candidate_ranker
+max_episodes: 20
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+xgboost_ranker_path: runs/eon/quick_runtime_artifacts/online_base_topn_exception_xgb_mvp20_top4_h8_s15_g25/xgboost_online_base_topn_exception_tree_ranker.json
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

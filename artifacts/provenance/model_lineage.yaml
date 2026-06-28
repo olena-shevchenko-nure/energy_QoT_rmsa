@@ -1,0 +1,67 @@
+snapshot:
+  target_repository: "https://github.com/olena-shevchenko-nure/energy_QoT_rmsa"
+  assembled_on: "2026-06-28"
+  source_branch: "energy_aware_ksp_bm_ff_based"
+  source_commit: "5d6fff1b26c9141c1e601d2404fbb82885459618"
+  source_remote_artifact_root: "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon/quick_runtime_artifacts"
+  source_remote_dataset_root: "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/data/eon/generated"
+
+models:
+  calibrated_dqn_override:
+    paper_name: "Calibrated DQN-Override baseline ranker"
+    runtime_policy_id: "torch_dqn_candidate_ranker_distill_old10"
+    artifact_folder: "artifacts/models/calibrated_dqn_override"
+    source_run_dir: "dqn_distill_old10_override_targetband"
+    selected_runtime_export: "torch_dqn_distill_old10_orate60_tree_ranker.json"
+    selected_checkpoint: "torch_dqn_distill_ranker.pt"
+    notes: "DQN-like MLP ranker with auxiliary win/loss/delta models and override-rate calibration."
+
+  lightgbm_override_old10:
+    paper_name: "LightGBM-override ranker"
+    runtime_policy_id: "lightgbm_candidate_ranker_old10"
+    artifact_folder: "artifacts/models/lightgbm_override_old10"
+    source_run_dir: "energy_ksp_top8_smoke"
+    selected_runtime_export: "lightgbm_lightgbm_old10_tree_ranker.json"
+    notes: "LightGBM ranker exported from the final old10 tree-ranker lineage."
+
+  full_dqn_stratified32_e5:
+    paper_name: "GNN-CNN Full DQN Ranker"
+    runtime_policy_id: "gnn_cnn_dqn"
+    artifact_folder: "artifacts/models/full_dqn_stratified32_e5"
+    source_run_dir: "full_dqn_orate60_distill_frozen_mvp20_stratified32_e5"
+    selected_checkpoint: "full_dqn_orate60_distill_frozen.pt"
+    notes: "Full neural GNN/CNN DQN candidate ranker selected for MVP80 comparison."
+
+  xlron_cf_rank_g160_bucket_guard:
+    paper_name: "XLRON Counterfactual Ranker"
+    runtime_policy_id: "top32_xlron_stabilized_ppo"
+    artifact_folder: "artifacts/models/xlron_cf_rank_g160_bucket_guard"
+    source_run_dir: "top32_xlron_cf_rank_h100_h50_g160_v1_bucket_guard_e8_lr2e5"
+    selected_checkpoint: "top32_xlron_counterfactual_rank_finetune_best.pt"
+    notes: "XLRON-style counterfactual ranker with bucket guard."
+
+  a3c_distill_full_dqn:
+    paper_name: "A3C Policy Distilled from Full DQN"
+    runtime_policy_id: "gnn_cnn_a3c"
+    artifact_folder: "artifacts/models/a3c_distill_full_dqn"
+    source_run_dir: "gnn_cnn_a3c_distill_full_dqn_stratified32_e5"
+    selected_checkpoint: "gnn_cnn_a3c_distill_best.pt"
+    notes: "GNN-CNN A3C actor-critic student distilled from the Full DQN teacher."
+
+heuristics:
+  energy_aware_ksp_bm_ff:
+    paper_name: "Energy-Aware-KSP-BM-FF"
+    runtime_policy_id: "energy-aware-ksp-bm-ff"
+  ksp_ff:
+    paper_name: "KSP-FF"
+    runtime_policy_id: "ksp-ff"
+  ksp_bm_ff:
+    paper_name: "KSP-BM-FF"
+    runtime_policy_id: "ksp-bm-ff"
+
+dataset:
+  name: "nsfnet_mvp_ong_expert_hybrid_mix"
+  folder: "data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix"
+  source_remote_dir: "/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix"
+  paper_eval_split: "MVP80 test split, 80 episodes, 60000 requests"
+

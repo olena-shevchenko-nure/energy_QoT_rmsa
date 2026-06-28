@@ -1,0 +1,43 @@
+experiment_name: eon_ong_rollout_mvp80_gnn_cnn_a3c_distill_old10_compare
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: test
+policies:
+  - lightgbm_candidate_ranker_old10
+  - gnn_cnn_a3c_override
+max_episodes: 80
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+lightgbm_candidate_ranker_old10_path: runs/eon/quick_runtime_artifacts/energy_ksp_top8_smoke/lightgbm_lightgbm_old10_tree_ranker.json
+gnn_cnn_a3c_override_checkpoint: ${CSE2026_GNN_CNN_A3C_OLD10_DISTILL_CHECKPOINT}
+tree_ranker_selection_mode: positive_advantage
+tree_ranker_base_policy: energy-aware-ksp-bm-ff
+tree_ranker_safety_guard: true
+tree_ranker_safety_guard_mode: emergency
+tree_ranker_guard_check_fragmentation: false
+tree_ranker_guard_check_small_gap: false
+tree_ranker_guard_check_lmax: false
+tree_ranker_guard_qot_margin_slack: 0.25
+tree_ranker_guard_energy_slack_w: 480.0
+tree_ranker_guard_delay_slack_ms: 10.0
+a3c_override_base_policy: energy-aware-ksp-bm-ff
+a3c_override_candidate_pool: energy_topk_hybrid
+a3c_override_candidate_pool_top_k: 8
+a3c_override_selection_margin: 0.0
+a3c_override_safety_guard: true
+a3c_override_safety_guard_mode: emergency
+a3c_override_guard_check_fragmentation: false
+a3c_override_guard_check_small_gap: false
+a3c_override_guard_check_lmax: false
+a3c_override_guard_qot_margin_slack: 0.25
+a3c_override_guard_energy_slack_w: 480.0
+a3c_override_guard_delay_slack_ms: 10.0
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

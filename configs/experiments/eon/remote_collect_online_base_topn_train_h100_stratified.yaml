@@ -1,0 +1,17 @@
+experiment_name: eon_collect_online_base_topn_train_h100_stratified
+stage: evaluate_policy
+dataset_path: data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix
+runs_root: runs/eon
+seed: 42
+device: auto
+rollout_split: train
+max_episodes: 80
+max_requests_per_episode: 0
+n_max: 32
+hidden_dim: 128
+q_score_mode: raw
+ong_source_path: /home/oshevchenko/experiments/optical-networking-gym
+ong_topology_id: nsfnet_chen
+k_routes: 5
+slots: 100
+qot_constraint: DIST

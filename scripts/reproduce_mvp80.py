@@ -137,7 +137,7 @@ def _read_ong_lock(path: Path) -> dict[str, str]:
 
 
 def _run_command(command: list[str], *, dry_run: bool = False) -> None:
-    print(f"ONG setup: {_command_display(command)}")
+    print(f"ONG setup: {_command_display(command)}", flush=True)
     if dry_run:
         return
     completed = subprocess.run(command, cwd=str(ROOT))
@@ -232,9 +232,9 @@ def _collect_missing_paths(config: dict[str, str], skip_ong_check: bool) -> list
 
 
 def _print_reference_outputs() -> None:
-    print("Reference paper outputs:")
+    print("Reference paper outputs:", flush=True)
     for relative in REFERENCE_OUTPUTS:
-        print(f"  - {relative}")
+        print(f"  - {relative}", flush=True)
 
 
 def build_arg_parser() -> argparse.ArgumentParser:
@@ -327,26 +327,30 @@ def main(argv: list[str] | None = None) -> int:
                     no_install=args.no_install_ong,
                 )
             except RuntimeError as exc:
-                print(f"ONG setup failed: {exc}", file=sys.stderr)
+                print(f"ONG setup failed: {exc}", file=sys.stderr, flush=True)
                 return 2
 
         if not args.skip_validation:
             skip_ong_validation = args.skip_ong_check or (args.dry_run and planned_ong_install)
             missing = _collect_missing_paths(config_values, skip_ong_check=skip_ong_validation)
             if missing:
-                print("Reproduction input check failed:", file=sys.stderr)
+                print("Reproduction input check failed:", file=sys.stderr, flush=True)
                 for item in missing:
-                    print(f"  - {item}", file=sys.stderr)
-                print("\nSee docs/environment_reproduction.md and docs/optical_networking_gym_setup.md.", file=sys.stderr)
+                    print(f"  - {item}", file=sys.stderr, flush=True)
+                print(
+                    "\nSee docs/environment_reproduction.md and docs/optical_networking_gym_setup.md.",
+                    file=sys.stderr,
+                    flush=True,
+                )
                 return 2
 
         command = [args.python, str(_repo_path(RUNNER)), "--config", str(runtime_config)]
         if args.runner_dry_run:
             command.append("--dry-run")
 
-        print(f"Repository root: {ROOT}")
-        print(f"Config: {runtime_config}")
-        print(f"Command: {_command_display(command)}")
+        print(f"Repository root: {ROOT}", flush=True)
+        print(f"Config: {runtime_config}", flush=True)
+        print(f"Command: {_command_display(command)}", flush=True)
         _print_reference_outputs()
 
         if args.dry_run:

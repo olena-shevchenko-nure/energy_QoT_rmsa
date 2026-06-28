@@ -1,3 +1,6 @@
+# Legacy minimal data-generation dependency list.
+# For pinned paper reproduction, use requirements-repro.txt.
+
 numpy
 pandas
 pyarrow

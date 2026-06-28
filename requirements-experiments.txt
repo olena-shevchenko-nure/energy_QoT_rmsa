@@ -1,2 +1,4 @@
-# No mandatory experiment-only dependencies yet.
+# Legacy minimal experiment dependency list.
+# For pinned paper reproduction, use requirements-repro.txt.
+#
 # Optional: install psutil for richer memory reporting in check_remote_env.py.

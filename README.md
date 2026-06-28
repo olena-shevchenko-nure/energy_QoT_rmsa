@@ -36,7 +36,7 @@ It includes the final model artifacts, the generated NSFNET MVP dataset, the Opt
 
 ## Main Reproduction Entry Points
 
-1. Install the Python dependencies from `requirements-data.txt` and `requirements-experiments.txt`.
+1. Install the pinned Python dependencies from `requirements-repro.txt`. See `docs/environment_reproduction.md`.
 2. Install or clone Optical Networking Gym as described in `docs/optical_networking_gym_setup.md`.
 3. Run the MVP80 comparison using the clean local config `configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml`.
 4. Compare the generated output with `results/mvp80/tables` and `results/mvp80/statistics`.

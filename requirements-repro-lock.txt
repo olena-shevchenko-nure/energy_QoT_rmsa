@@ -1,0 +1,131 @@
+# Full observed Python package freeze from the sw-l40 experiment host.
+#
+# Captured on: 2026-06-28
+# OS: Ubuntu 24.04.4 LTS
+# Kernel: Linux 6.8.0-107-generic x86_64 GNU/Linux
+# Python: 3.12.3
+# pip: 26.1.1 from /home/oshevchenko/.local/lib/python3.12/site-packages/pip
+# GPU: NVIDIA L40
+# NVIDIA driver: 580.126.09
+#
+# This is an environment snapshot, not a minimal install file. Some entries are
+# Ubuntu/system packages reported by pip freeze and may not be portable to a
+# fresh pip-only virtual environment. For fresh reproduction, start from
+# requirements-repro.txt.
+
+attrs==23.2.0
+Automat==22.10.0
+Babel==2.10.3
+bcc==0.29.1
+bcrypt==3.2.2
+blinker==1.7.0
+boto3==1.34.46
+botocore==1.34.46
+certifi==2023.11.17
+chardet==5.2.0
+click==8.1.6
+cloud-init==25.3
+cloudpickle==3.1.2
+colorama==0.4.6
+command-not-found==0.3
+configobj==5.0.8
+constantly==23.10.4
+cryptography==41.0.7
+cuda-bindings==13.3.1
+cuda-pathfinder==1.5.5
+cuda-toolkit==13.0.2
+dbus-python==1.3.2
+distro==1.9.0
+distro-info==1.7+build1
+Farama-Notifications==0.0.6
+filelock==3.29.0
+fsspec==2026.4.0
+gymnasium==1.3.0
+httplib2==0.20.4
+hyperlink==21.0.0
+idna==3.6
+incremental==22.10.4
+iniconfig==2.3.0
+Jinja2==3.1.2
+jmespath==1.0.1
+jsonpatch==1.32
+jsonpointer==2.0
+jsonschema==4.10.3
+launchpadlib==1.11.0
+lazr.restfulclient==0.14.6
+lazr.uri==1.0.6
+lightgbm==4.6.0
+markdown-it-py==3.0.0
+MarkupSafe==2.1.5
+mdurl==0.1.2
+mpmath==1.3.0
+netaddr==0.8.0
+netifaces==0.11.0
+networkx==3.6.1
+numpy==2.4.6
+nvidia-cublas==13.1.1.3
+nvidia-cuda-cupti==13.0.85
+nvidia-cuda-nvrtc==13.0.88
+nvidia-cuda-runtime==13.0.96
+nvidia-cudnn-cu13==9.20.0.48
+nvidia-cufft==12.0.0.61
+nvidia-cufile==1.15.1.6
+nvidia-curand==10.4.0.35
+nvidia-cusolver==12.0.4.66
+nvidia-cusparse==12.6.3.3
+nvidia-cusparselt-cu13==0.8.1
+nvidia-nccl-cu12==2.30.4
+nvidia-nccl-cu13==2.29.7
+nvidia-nvjitlink==13.0.88
+nvidia-nvshmem-cu13==3.4.5
+nvidia-nvtx==13.0.85
+oauthlib==3.2.2
+packaging==24.0
+pandas==3.0.3
+pexpect==4.9.0
+pluggy==1.6.0
+ptyprocess==0.7.0
+pyarrow==24.0.0
+pyasn1==0.4.8
+pyasn1-modules==0.2.8
+Pygments==2.17.2
+PyGObject==3.48.2
+PyHamcrest==2.1.0
+PyJWT==2.7.0
+pyOpenSSL==23.2.0
+pyparsing==3.1.1
+pyrsistent==0.20.0
+pyserial==3.5
+pytest==9.0.3
+python-apt==2.7.7+ubuntu5.2
+python-dateutil==2.8.2
+python-debian==0.1.49+ubuntu2
+python-magic==0.4.27
+pytz==2024.1
+PyYAML==6.0.1
+requests==2.31.0
+rich==13.7.1
+s3transfer==0.10.1
+scipy==1.17.1
+screen-resolution-extra==0.0.0
+service-identity==24.1.0
+setuptools==68.1.2
+six==1.16.0
+sos==4.10.2
+ssh-import-id==5.11
+sympy==1.14.0
+systemd-python==235
+torch==2.12.0
+tqdm==4.67.3
+triton==3.7.0
+Twisted==24.3.0
+typing_extensions==4.15.0
+ubuntu-drivers-common==0.0.0
+ubuntu-pro-client==8001
+unattended-upgrades==0.1
+urllib3==2.0.7
+wadllib==1.3.6
+xgboost==3.2.0
+xkit==0.0.0
+zope.interface==6.1
+

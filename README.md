@@ -33,6 +33,7 @@ It includes the final model artifacts, the generated NSFNET MVP dataset, the Opt
 - Clean evaluation config: `configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml`.
 - Paper result tables and statistical analysis files under `results/mvp80` and `docs/experiments/raw`.
 - Provenance and checksums under `artifacts/provenance`.
+- Training-lineage evidence index: `docs/training_lineage.md`.
 - External Optical Networking Gym version lock under `third_party/optical-networking-gym.lock`.
 
 ## Main Reproduction Entry Points

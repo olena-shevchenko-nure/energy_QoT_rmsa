@@ -1,0 +1,31 @@
+# Optical Networking Gym dependency lock
+#
+# This file pins the external Optical Networking Gym checkout used for the
+# paper experiments. The package itself is not vendored in this repository.
+
+dependency: optical-networking-gym
+upstream_repository: https://github.com/carlosnatalino/optical-networking-gym.git
+branch_at_experiment_time: main
+commit: 622d0741ff75388161f7c468757ae880471d6d2b
+describe: 622d074
+tags_at_commit: []
+working_tree_status_at_experiment_time: clean
+
+last_commit:
+  hash: 622d0741ff75388161f7c468757ae880471d6d2b
+  author: Carlos Natalino
+  email: 6130746+carlosnatalino@users.noreply.github.com
+  date: 2026-05-14T08:49:09+02:00
+  subject: Removing old Python versions
+
+experiment_usage:
+  config_key: ong_source_path
+  clean_repo_expected_path: external/optical-networking-gym
+  original_experiment_host_path: /home/oshevchenko/experiments/optical-networking-gym
+  ong_topology_id: nsfnet_chen
+  qot_constraint: DIST
+
+reproduce:
+  clone_command: git clone https://github.com/carlosnatalino/optical-networking-gym.git external/optical-networking-gym
+  checkout_command: git -C external/optical-networking-gym checkout 622d0741ff75388161f7c468757ae880471d6d2b
+

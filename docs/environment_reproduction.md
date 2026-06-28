@@ -39,10 +39,10 @@ git clone https://github.com/carlosnatalino/optical-networking-gym.git external/
 git -C external/optical-networking-gym checkout 622d0741ff75388161f7c468757ae880471d6d2b
 ```
 
-If your local path differs from `external/optical-networking-gym`, update `ong_source_path` in:
+If your local path differs from `external/optical-networking-gym`, pass it to the reproduction wrapper:
 
-```text
-configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml
+```bash
+python scripts/reproduce_mvp80.py --ong-source-path /path/to/optical-networking-gym
 ```
 
 ## Lock File Caveat

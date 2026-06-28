@@ -29,7 +29,8 @@ It includes the final model artifacts, the generated NSFNET MVP dataset, the Opt
 - Generated dataset: `data/eon/generated/nsfnet_mvp_ong_expert_hybrid_mix`.
 - NSFNET topology and modulation data used by the experiments.
 - Source files under `src/cse2026`, including data generation, policy runtime, and experiment code.
-- Evaluation config: `configs/experiments/eon/remote_ong_rollout_mvp80_selected_topn_p95_compare.yaml`.
+- Canonical MVP80 reproduction wrapper: `scripts/reproduce_mvp80.py`.
+- Clean evaluation config: `configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml`.
 - Paper result tables and statistical analysis files under `results/mvp80` and `docs/experiments/raw`.
 - Provenance and checksums under `artifacts/provenance`.
 - External Optical Networking Gym version lock under `third_party/optical-networking-gym.lock`.
@@ -38,10 +39,21 @@ It includes the final model artifacts, the generated NSFNET MVP dataset, the Opt
 
 1. Install the pinned Python dependencies from `requirements-repro.txt`. See `docs/environment_reproduction.md`.
 2. Install or clone Optical Networking Gym as described in `docs/optical_networking_gym_setup.md`.
-3. Run the MVP80 comparison using the clean local config `configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml`.
-4. Compare the generated output with `results/mvp80/tables` and `results/mvp80/statistics`.
+3. Check the local MVP80 inputs:
 
-The exact execution command depends on the local Optical Networking Gym checkout path and GPU availability. See `docs/experiment_runbook.md`.
+```bash
+python scripts/reproduce_mvp80.py --dry-run
+```
+
+4. Run the MVP80 comparison:
+
+```bash
+python scripts/reproduce_mvp80.py
+```
+
+5. Compare the generated output with `results/mvp80/tables` and `results/mvp80/statistics`.
+
+If Optical Networking Gym is not checked out at `external/optical-networking-gym`, pass `--ong-source-path /path/to/optical-networking-gym`. See `docs/experiment_runbook.md`.
 
 ## Current Paper Results
 

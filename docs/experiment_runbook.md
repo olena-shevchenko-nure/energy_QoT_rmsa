@@ -14,6 +14,25 @@ For this clean repository, use the path-adjusted config:
 configs/evaluation/mvp80_selected_topn_p95_compare_clean.yaml
 ```
 
+The reviewer-facing entry point is:
+
+```bash
+python scripts/reproduce_mvp80.py --dry-run
+python scripts/reproduce_mvp80.py
+```
+
+For a local smoke check before the full 80-episode rollout:
+
+```bash
+python scripts/reproduce_mvp80.py --max-episodes 1 --max-requests-per-episode 200
+```
+
+If Optical Networking Gym is installed elsewhere, use:
+
+```bash
+python scripts/reproduce_mvp80.py --ong-source-path /path/to/optical-networking-gym
+```
+
 The configuration evaluates these policies on the same NSFNET MVP80 test split:
 
 - `torch_dqn_candidate_ranker_distill_old10`

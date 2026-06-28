@@ -29,7 +29,11 @@ git clone https://github.com/carlosnatalino/optical-networking-gym.git external/
 git -C external/optical-networking-gym checkout 622d0741ff75388161f7c468757ae880471d6d2b
 ```
 
-Then update `ong_source_path` in the evaluation config if your local path differs.
+Then pass the local path to the evaluation wrapper if your checkout path differs:
+
+```bash
+python scripts/reproduce_mvp80.py --ong-source-path /path/to/optical-networking-gym
+```
 
 Required simulation settings in the paper comparison:
 

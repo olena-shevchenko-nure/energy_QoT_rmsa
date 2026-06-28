@@ -3,6 +3,13 @@
 This repository contains the reproducibility snapshot for the CSE 2026 RMSA experiments reported in the paper.
 It includes the final model artifacts, the generated NSFNET MVP dataset, the Optical Networking Gym evaluation configuration, source code, and raw result/statistical tables used for the paper comparison.
 
+## License
+
+- Source code, scripts, and configuration files: GNU GPL v3 or later. See `LICENSE`.
+- Generated datasets, result tables, statistical summaries, and experiment reports: CC BY 4.0. See `DATA_LICENSE.md`.
+- Trained checkpoints and exported runtime model artifacts: CC BY 4.0. See `MODEL_ARTIFACTS_LICENSE.md`.
+- Optical Networking Gym is an external dependency pinned in `third_party/optical-networking-gym.lock` and remains subject to its upstream license.
+
 ## Paper Policy Mapping
 
 | Paper name | Repository artifact / policy id | Runtime type |

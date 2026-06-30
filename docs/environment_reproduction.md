@@ -16,6 +16,7 @@ The pinned package versions were captured from the server used for the final exp
 ```text
 OS: Ubuntu 24.04.4 LTS
 Kernel: Linux 6.8.0-107-generic x86_64 GNU/Linux
+CPU: 2 x AMD EPYC 9354 32-Core Processor, 64 physical cores / 128 threads
 Python: 3.12.3
 pip: 26.1.1
 GPU: NVIDIA L40

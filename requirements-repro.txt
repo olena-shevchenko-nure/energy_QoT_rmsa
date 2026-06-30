@@ -1,7 +1,9 @@
 # Pinned installable dependencies for reproducing the MVP80 evaluation.
 #
 # Captured from the sw-l40 experiment host on 2026-06-28.
-# Host runtime: Ubuntu 24.04.4 LTS, Python 3.12.3, NVIDIA L40 driver 580.126.09.
+# Host runtime: Ubuntu 24.04.4 LTS, Python 3.12.3,
+# CPU: 2 x AMD EPYC 9354 32-Core Processor, 64 physical cores / 128 threads,
+# GPU: NVIDIA L40 driver 580.126.09.
 #
 # This curated file is intended for creating a fresh environment.
 # For the complete observed host freeze, see requirements-repro-lock.txt.
@@ -19,4 +21,3 @@ scipy==1.17.1
 gymnasium==1.3.0
 cloudpickle==3.1.2
 pytest==9.0.3
-

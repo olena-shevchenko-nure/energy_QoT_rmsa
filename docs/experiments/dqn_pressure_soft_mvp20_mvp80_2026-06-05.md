@@ -59,10 +59,9 @@ But it over-pruned useful overrides in other regimes:
 
 Local workspace copies:
 
-- `C:\work\codex\projects\CSE 2026\tmp_mvp20_dqn_distill_old10_pressure_soft_smoke`
-- `C:\work\codex\projects\CSE 2026\tmp_mvp80_dqn_distill_old10_pressure_soft_only`
+- `C:\work\projects\CSE 2026\tmp_mvp20_dqn_distill_old10_pressure_soft_smoke`
+- `C:\work\projects\CSE 2026\tmp_mvp80_dqn_distill_old10_pressure_soft_only`
 
 Remote run:
 
 - `/home/oshevchenko/experiments/cse2026-ong-solver-20260530-0325/runs/eon/eon_ong_rollout_mvp80_dqn_distill_old10_pressure_soft_only/20260605_175447_unknown`
-
